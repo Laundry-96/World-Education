@@ -19,6 +19,7 @@ int main()
 	string line = "";
 	while (getline(countriesFile, line))
 	{
-		cout << line << endl;
+		if(line.find("--") != std::string::npos)
+			cout << "Found -- in " << line << endl;
 	}
 }
