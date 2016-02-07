@@ -14,7 +14,7 @@ int main()
 	ifstream dataFile;
 
 	countriesFile.open("CountriesContinents.txt");
-	countriesFile.open("2013WorldBankEducationCensusData.txt");
+	dataFile.open("2013WorldBankEducationCensusData.txt");
 
 	string line = "";
 	while (getline(countriesFile, line))
