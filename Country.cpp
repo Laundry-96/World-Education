@@ -22,13 +22,50 @@ Country::Country(string EAT_SHIT)
 {
 	istringstream isis(EAT_SHIT);
 
+	//These two variables will always be filled with correct values no matter what
 	isis >> this->name;
 	isis >> this->population;
-	isis >> this->literacyRate;
-	isis >> this->primaryCompletionFemale;
-	isis >> this->primaryCompletionMale;
-	isis >> this->primaryCompletionTotal;
-	isis >> this->educationGDPSpent;
-	isis >> this->youthLitRateFem;
-	isis >> this->youthLitRateMale;
+
+	//Don't know if proper data is in these
+
+	string nextVar = "";
+
+	//literacyRate
+	isis >> nextVar;
+	setVar(this -> literacyRate, nextVar);
+
+	//primaryCompletionFemale
+	isis >> nextVar;
+	setVar(this -> primaryCompletionFemale, nextVar);
+
+	//primaryCompletionMale
+	isis >> nextVar;
+	setVar(this -> primaryCompletionMale, nextVar);
+
+	//primaryCompletionTotal
+	isis >> nextVar;
+	setVar(this -> primaryCompletionTotal, nextVar);
+
+	//educationalGDPSpent
+	isis >> nextVar;
+	setVar(this -> educationGDPSpent, nextVar);
+	
+	//youthLitRateFem
+	isis >> nextVar;
+	setVar(this -> youthLitRateFem, nextVar);
+
+	//youthLitRateMale
+	isis >> nextVar;
+	setVar(this -> youthLitRateMale, nextVar);
+}
+
+void Country::setVar(float& fl, string& val)
+{
+	//If the string is "N/A", set it to -1.0
+	if (!val.compare("N/A"))
+		fl = float(-1.0);
+
+	//Has a valid value, set the value
+	else
+		fl = stof(val);
 }

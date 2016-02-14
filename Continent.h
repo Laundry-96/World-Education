@@ -9,16 +9,18 @@ using namespace std;
 class Continent : public Country
 {
 	public:
+
 		Continent(string name, vector<Country> countries);
 
-		vector<Country> getCountriesInContinent() 	{return countriesInContinent;}
-		Country 		getHighestPopulation()		{return highestPopulation;}
-		Country			getHighestGDPSpent()		{return hightestGDPSpent;}
-		Country			getHighestLiteracyRate()	{return highestLiteracyRate;}
+		vector<Country> getCountriesInContinent() 	const {return countriesInContinent;}
+		Country 		getHighestPopulation()		const {return highestPopulation;}
+		Country			getHighestGDPSpent()		const {return hightestGDPSpent;}
+		Country			getHighestLiteracyRate()	const {return highestLiteracyRate;}
 
 		friend ostream& operator<<(ostream& sout, const Continent& r);
 
 	private:
+
 		vector<Country> countriesInContinent;
 		Country highestPopulation;
 		Country hightestGDPSpent;
