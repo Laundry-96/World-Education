@@ -7,6 +7,9 @@
 
 using namespace std;
 
+Country parseData(string data);
+void	setVar(float& fl, string& val);
+
 int main()
 {
 	vector<Continent> world;
@@ -18,13 +21,19 @@ int main()
 
 	string line = "";
 
-	vector<string> countryData;
-	string countryDataLine;
+	vector<Country> countryData;
+	string countryDataLine = "";
+	string waste = "";
+
+	getline(dataFile, waste);
 
 	while(getline(dataFile, countryDataLine))
 	{
-		countryData.push_back(countryDataLine);
+		cout << countryDataLine << endl;
+		countryData.push_back(parseData(countryDataLine));
 	}
+
+	cout << countryData.size() << endl;
 
 	while (getline(countriesFile, line))
 	{
@@ -38,24 +47,22 @@ int main()
 
 			for (int i = 0; i < countriesAmount; i++)
 			{
+				//cout << i << endl;
 				string countryName;
 				getline(countriesFile, countryName);
 
-				//cout << "Trying to find " << countryName << endl;
-
-
-				for (int i = 0; i < countryData.size(); i++)
+				for (int j = 0; j < countryData.size(); j++)
 				{
-					if (countryData.at(i).find(countryName) != std::string::npos)
+					//cout << countryData.size() << endl;
+					//cout << j << endl;
+					if (!countryData.at(j).getName().compare(countryName))
 					{
-						countries.push_back(Country(countryData.at(i)));
-						//cout << countryData.at(i) << endl;
+						countries.push_back(countryData.at(j));
 					}
 
 				}
-				//countries.push_back(Country("Test", -1, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0));
 			}
-
+			cout << "WElP" << endl;
 			world.push_back(Continent(continent, countries));
 		}
 	}
@@ -64,5 +71,72 @@ int main()
 	{
 		cout << world.at(i) << endl;
 		
+	}
+}
+
+Country parseData(string country_data)
+{
+	string name;
+	long population;
+	float literacyRate;
+	float educationGDPSpent;
+	float primaryCompletionTotal;
+	float primaryCompletionMale;
+	float primaryCompletionFemale;
+	float youthLitRateFem;
+	float youthLitRateMale;
+
+	istringstream isis(country_data);
+
+	//These two variables will always be filled with correct values no matter what
+	isis >> name;
+	//cout << name << endl;
+	isis >> population;
+
+	//Don't know if proper data is in these
+	string nextVar = "";
+
+	//literacyRate
+	isis >> nextVar;
+	setVar(literacyRate, nextVar);
+
+	//educationalGDPSpent
+	isis >> nextVar;
+	setVar(educationGDPSpent, nextVar);
+
+	//primaryCompletionTotal
+	isis >> nextVar;
+	setVar(primaryCompletionTotal, nextVar);
+
+	//primaryCompletionMale
+	isis >> nextVar;
+	setVar(primaryCompletionMale, nextVar);
+
+	//primaryCompletionFemale
+	isis >> nextVar;
+	setVar(primaryCompletionFemale, nextVar);
+
+	//youthLitRateFem
+	isis >> nextVar;
+	setVar(youthLitRateFem, nextVar);
+
+	//youthLitRateMale
+	isis >> nextVar;
+	setVar(youthLitRateMale, nextVar);
+
+	return Country(name, population, literacyRate, educationGDPSpent, primaryCompletionTotal, primaryCompletionMale, primaryCompletionFemale, youthLitRateFem, youthLitRateMale);
+}
+
+void setVar(float& fl, string& val)
+{
+	//If the string is "N/A", set it to -1.0
+	if (!val.compare("N/A"))
+		fl = float(-1.0);
+
+	//Has a valid value, set the value
+	else
+	{
+		istringstream temp(val);
+		temp >> fl;
 	}
 }

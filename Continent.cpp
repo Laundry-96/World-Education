@@ -13,21 +13,30 @@ Continent::Continent(string name, vector<Country> countries)
 	//Set highest GDP, Population and Literacy rate
 	for(int i = 0; i < getCountriesInContinent().size(); i++)
 	{
-		int tempPop = getCountriesInContinent().at(i).getPopulation();
-		int tempGDP = getCountriesInContinent().at(i).getEducationGDPSpent();
-		int tempLit = getCountriesInContinent().at(i).getLiteracyRate();
+		long tempPop = getCountriesInContinent().at(i).getPopulation();
+		float tempGDP = getCountriesInContinent().at(i).getEducationGDPSpent();
+		float tempLit = getCountriesInContinent().at(i).getLiteracyRate();
+		string tempName = getCountriesInContinent().at(i).getName();
+
+		cout << tempName << " " << tempPop << " " << tempLit << " " << tempGDP << endl;
 
 		//Add so we get population for the continent
 		totalPop += tempPop;
 
 		if(tempPop > getCountriesInContinent().at(indexOfHighestPop).getPopulation())
+		{
 			indexOfHighestPop = i;
+		}
 
 		if(tempGDP > getCountriesInContinent().at(indexOfHighestGDPSpent).getEducationGDPSpent())
+		{
 			indexOfHighestGDPSpent = i;
+		}
 
 		if(tempLit > getCountriesInContinent().at(indexOfHighestLitRate).getLiteracyRate())
+		{
 			indexOfHighestLitRate = i;
+		}
 	}
 
 	setPopulation(totalPop);
@@ -46,5 +55,6 @@ ostream& operator<< (ostream& sout, const Continent& r)
 	sout << " Country with the highest literacy rate: " << r.getHighestLiteracyRate().toString() << endl;
 	sout << " Country with the highest GDP spendature on education: " << r.getHighestGDPSpent().toString() << endl;
 	sout << " Country with the highest population: " << r.getHighestPopulation().toString() << endl;
+	
 	return sout;
 }

@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <sstream>
-//#include <stof>
 #include <string>
 
 using namespace std;
@@ -14,7 +13,7 @@ class Country
 		/* Country constructors */
 		Country();
 		Country(string name, long population, float literacyRate, float primaryCompletionFemale, float primaryCompletionMale, float primaryCompletionTotal, float educationGDPSpent, float youthLitRateFem, float youthLitRateMale);
-		Country(string EAT_SHIT);
+		Country(string data);
 
 		/* Getters */
 		string 	getName()										const	{return name;}

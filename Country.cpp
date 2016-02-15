@@ -5,25 +5,26 @@ Country::Country()
 	
 }
 
-Country::Country(string name, long population, float literacyRate, float primaryCompletionFemale, float primaryCompletionMale, float primaryCompletionTotal, float educationGDPSpent, float youthLitRateFem, float youthLitRateMale)
+Country::Country(string name, long population, float literacyRate, float educationGDPSpent, float primaryCompletionTotal, float primaryCompletionMale, float primaryCompletionFemale, float youthLitRateFem, float youthLitRateMale)
 {
 	this->name 						= name;
 	this->population 				= population;
 	this->literacyRate 				= literacyRate;
+	this->educationGDPSpent 		= educationGDPSpent;
 	this->primaryCompletionFemale 	= primaryCompletionFemale;
 	this->primaryCompletionMale 	= primaryCompletionMale;
 	this->primaryCompletionTotal 	= primaryCompletionTotal;
-	this->educationGDPSpent 		= educationGDPSpent;
 	this->youthLitRateFem 			= youthLitRateFem;
 	this->youthLitRateMale 			= youthLitRateMale;
 }
 
-Country::Country(string EAT_SHIT)
+Country::Country(string country_data)
 {
-	istringstream isis(EAT_SHIT);
+	istringstream isis(country_data);
 
 	//These two variables will always be filled with correct values no matter what
 	isis >> this->name;
+	//cout << name << endl;
 	isis >> this->population;
 
 	//Don't know if proper data is in these
@@ -33,22 +34,22 @@ Country::Country(string EAT_SHIT)
 	isis >> nextVar;
 	setVar(this -> literacyRate, nextVar);
 
-	//primaryCompletionFemale
+	//educationalGDPSpent
 	isis >> nextVar;
-	setVar(this -> primaryCompletionFemale, nextVar);
-
-	//primaryCompletionMale
-	isis >> nextVar;
-	setVar(this -> primaryCompletionMale, nextVar);
+	setVar(this -> educationGDPSpent, nextVar);
 
 	//primaryCompletionTotal
 	isis >> nextVar;
 	setVar(this -> primaryCompletionTotal, nextVar);
 
-	//educationalGDPSpent
+	//primaryCompletionMale
 	isis >> nextVar;
-	setVar(this -> educationGDPSpent, nextVar);
-	
+	setVar(this -> primaryCompletionMale, nextVar);
+
+	//primaryCompletionFemale
+	isis >> nextVar;
+	setVar(this -> primaryCompletionFemale, nextVar);
+
 	//youthLitRateFem
 	isis >> nextVar;
 	setVar(this -> youthLitRateFem, nextVar);
@@ -66,15 +67,20 @@ void Country::setVar(float& fl, string& val)
 
 	//Has a valid value, set the value
 	else
-		fl = stof(val);
+	{
+		istringstream temp(val);
+		temp >> fl;
+	}
 }
 
 string Country::toString() const
 {
+	//Turn populaton into a string
 	ostringstream osisPop;
 	osisPop << getPopulation();
 	string population = osisPop.str();
 
+	//Turn lit rate into a string
 	ostringstream osisLit;
 	osisLit << getLiteracyRate();
 	string lit = osisLit.str();
