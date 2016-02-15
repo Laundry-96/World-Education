@@ -1,3 +1,14 @@
+
+/*
+ * Country.cpp
+ * Project 0
+ * Austin DeLauney
+ * 02/07/16
+ * Section 03
+ * adelau1@umbc.edu
+ * This is the implemention for Country.h. Mostly getters and setters.
+ */
+ 
 #ifndef COUNTRY_H
 #define	COUNTRY_H
 
@@ -12,8 +23,8 @@ class Country
 	public:
 		/* Country constructors */
 		Country();
-		Country(string name, long population, float literacyRate, float primaryCompletionFemale, float primaryCompletionMale, float primaryCompletionTotal, float educationGDPSpent, float youthLitRateFem, float youthLitRateMale);
-		Country(string data);
+		Country(string name, long population, float literacyRate, float educationGDPSpent, float primaryCompletionTotal, float primaryCompletionMale, float primaryCompletionFemale, float youthLitRateFem, float youthLitRateMale);
+
 
 		/* Getters */
 		string 	getName()										const	{return name;}

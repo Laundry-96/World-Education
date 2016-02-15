@@ -1,3 +1,14 @@
+/*
+ * Continent.h
+ * Project 0
+ * Austin DeLauney
+ * 02/07/16
+ * Section 03
+ * adelau1@umbc.edu
+ * This is the header for Continent.cpp. Necessary things for the class.
+ */
+
+
 #ifndef CONTINENT_H
 #define CONTINENT_H
 
