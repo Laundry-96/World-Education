@@ -58,9 +58,6 @@ int main()
 
 			world.push_back(Continent(continent, countries));
 		}
-
-		else
-			cout << "ERROR ERROR ERROR" << endl;
 	}
 
 	for (int i = 0; i < world.size(); i++)

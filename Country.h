@@ -18,6 +18,7 @@ class Country
 
 		/* Getters */
 		string 	getName()										const	{return name;}
+		string 	toString() 										const;
 		long  	getPopulation() 								const	{return population;}
 		float 	getLiteracyRate() 								const	{return literacyRate;}
 		float 	getPrimaryCompletionFemale() 					const	{return primaryCompletionFemale;}
@@ -26,6 +27,7 @@ class Country
 		float  	getEducationGDPSpent() 							const	{return educationGDPSpent;}
 		float  	getYouthLitRateFem() 							const	{return youthLitRateFem;}
 		float  	getYouthLitRateMale() 							const	{return youthLitRateMale;}
+
 
 		/* Setters */
 		void 	setName(string newName) 								{name = newName;}

@@ -14,7 +14,7 @@ class Continent : public Country
 
 		vector<Country> getCountriesInContinent() 	const {return countriesInContinent;}
 		Country 		getHighestPopulation()		const {return highestPopulation;}
-		Country			getHighestGDPSpent()		const {return hightestGDPSpent;}
+		Country			getHighestGDPSpent()		const {return highestGDPSpent;}
 		Country			getHighestLiteracyRate()	const {return highestLiteracyRate;}
 
 		friend ostream& operator<<(ostream& sout, const Continent& r);
@@ -23,7 +23,7 @@ class Continent : public Country
 
 		vector<Country> countriesInContinent;
 		Country highestPopulation;
-		Country hightestGDPSpent;
+		Country highestGDPSpent;
 		Country highestLiteracyRate;
 };
 

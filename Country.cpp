@@ -27,7 +27,6 @@ Country::Country(string EAT_SHIT)
 	isis >> this->population;
 
 	//Don't know if proper data is in these
-
 	string nextVar = "";
 
 	//literacyRate
@@ -68,4 +67,17 @@ void Country::setVar(float& fl, string& val)
 	//Has a valid value, set the value
 	else
 		fl = stof(val);
+}
+
+string Country::toString() const
+{
+	ostringstream osisPop;
+	osisPop << getPopulation();
+	string population = osisPop.str();
+
+	ostringstream osisLit;
+	osisLit << getLiteracyRate();
+	string lit = osisLit.str();
+
+	return getName() + " with a population of " + population + " and a literacy rate of " + lit;
 }
