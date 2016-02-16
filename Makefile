@@ -1,7 +1,7 @@
 LD = $(shell which g++)
 CXX = $(shell which g++)
-CXXFLAGS = -O2
-EXE = Project
+CXXFLAGS = -Wall
+EXE = proj0
 OBJS = driver.o Country.o Continent.o
 DEPS = $(addprefix .,$(OBJS:.o=.d))
 
@@ -16,6 +16,9 @@ $(OBJS): %.o: %.cpp
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
 
 -include $(DEPS)
+
+run: $(EXE)
+	./$(EXE)
 
 .PHONY: clean
 clean:

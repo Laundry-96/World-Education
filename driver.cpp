@@ -59,12 +59,12 @@ int main()
 		if(line.find("--") != std::string::npos)
 		{
 			//Variables for parsing countries
-			istringstream isis(line);
+			istringstream iss(line);
 			string continent, filler;
 			int countriesAmount;
 
 			//Get the Continent name and amount
-			isis >> continent >> filler >> countriesAmount;
+			iss >> continent >> filler >> countriesAmount;
 			vector<Country> countries;
 
 			//Puts all fo the countries into the continent
@@ -105,42 +105,42 @@ Country parseData(string country_data)
 	float youthLitRateFem;
 	float youthLitRateMale;
 
-	istringstream isis(country_data);
+	istringstream iss(country_data);
 
 	//These two variables will always be filled with correct values no matter what
-	isis >> name;
+	iss >> name;
 	//cout << name << endl;
-	isis >> population;
+	iss >> population;
 
 	//Don't know if proper data is in these
 	string nextVar = "";
 
 	//literacyRate
-	isis >> nextVar;
+	iss >> nextVar;
 	setVar(literacyRate, nextVar);
 
 	//educationalGDPSpent
-	isis >> nextVar;
+	iss >> nextVar;
 	setVar(educationGDPSpent, nextVar);
 
 	//primaryCompletionTotal
-	isis >> nextVar;
+	iss >> nextVar;
 	setVar(primaryCompletionTotal, nextVar);
 
 	//primaryCompletionMale
-	isis >> nextVar;
+	iss >> nextVar;
 	setVar(primaryCompletionMale, nextVar);
 
 	//primaryCompletionFemale
-	isis >> nextVar;
+	iss >> nextVar;
 	setVar(primaryCompletionFemale, nextVar);
 
 	//youthLitRateFem
-	isis >> nextVar;
+	iss >> nextVar;
 	setVar(youthLitRateFem, nextVar);
 
 	//youthLitRateMale
-	isis >> nextVar;
+	iss >> nextVar;
 	setVar(youthLitRateMale, nextVar);
 
 	return Country(name, population, literacyRate, educationGDPSpent, primaryCompletionTotal, primaryCompletionMale, primaryCompletionFemale, youthLitRateFem, youthLitRateMale);
